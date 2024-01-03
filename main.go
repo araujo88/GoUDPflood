@@ -13,25 +13,9 @@ import (
 	"time"
 )
 
-// pseudoHeader represents a pseudo header for UDP checksum calculation.
-type pseudoHeader struct {
-	sourceAddress      [4]byte
-	destinationAddress [4]byte
-	placeholder        byte
-	protocol           byte
-	udpLength          uint16
-}
-
 var (
-	maxThreads   int
-	threads      []chan bool
-	mutex        sync.Mutex
-	rawSocket    *net.IPConn
-	portNumber   int
-	sourceIP     [32]byte
-	data         string
-	sIn          net.UDPAddr
-	PseudoHeader pseudoHeader
+	portNumber int
+	data       string
 )
 
 func randomInt(min, max int) int {
